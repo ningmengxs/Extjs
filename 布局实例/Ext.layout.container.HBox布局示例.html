@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.layout.container.HBox布局示例:</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.panel.Panel',{
+                title : 'Ext.layout.container.HBox布局示例',
+                layout:{
+                    type : 'hbox',//水平盒布局
+                    align : 'stretch'//子面板高度充满父容器
+                },
+                height : 150,
+                width : 300,
+                frame : true,
+                renderTo: Ext.getBody(),
+                items: [{
+                    title: '子面板一',
+                    flex : 1,
+                    html : '1/4宽(flex=1)'
+                },{
+                    title: '子面板二',
+                    flex : 1,
+                    html : '1/4宽(flex=1)'
+                },{
+                    title: '子面板三',
+                    flex : 2,
+                    html : '1/2宽(flex=2)'
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手动模式的进度条</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //手动模式的进度条
+            var ProgressBar = new Ext.ProgressBar({
+                width:300,//设定进度条的宽度
+                renderTo:'ProgressBar'
+            });
+            var count = 0;//滚动条被刷新的次数
+            var percentage = 0;//进度百分比
+            var progressText = '';//进度条信息
+
+            Ext.TaskManager.start({
+                run:function(){
+                    count++;
+                    //刷新10次后关闭信息提示对话框
+                    if(count > 10){
+                        ProgressBar.hide();
+                    }
+                    //计算进度
+                    percentage = count/10;
+                    progressText = percentage * 100 + '%'
+                    //更新信息提示对话框
+                    ProgressBar.updateProgress(percentage,progressText,true);
+                },
+                interval:1000,//设置时间间隔
+                repeat : 6//设置执行次数
+            });
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

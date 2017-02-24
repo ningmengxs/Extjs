@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.layout.container.Border布局示例:</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.panel.Panel',{
+                title : 'Ext.layout.container.Border布局示例',
+                layout:'border',//边框布局
+                height : 250,
+                width : 400,
+                frame : true,
+                renderTo: Ext.getBody(),
+                defaults : {//设置默认属性
+                    collapsible : true
+                },
+                items: [{
+                    title: 'north Panel',
+                    html : '上边',
+                    region: 'north',//指定子面板所在区域为north
+                    height: 50
+                },{
+                    title: 'South Panel',
+                    html : '下边',
+                    region: 'south',//指定子面板所在区域为south
+                    height: 50
+                },{
+                    title: 'West Panel',
+                    html : '左边',
+                    region:'west',//指定子面板所在区域为west
+                    width: 100
+                },{
+                    title: 'east Panel',
+                    frameHeader : true,
+                    frame : false,
+                    html : '右边',
+                    region:'east',//指定子面板所在区域为east
+                    width: 100
+                },{
+                    title: 'Main Content',
+                    html : '中间',
+                    region:'center'//指定子面板所在区域为center
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

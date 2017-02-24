@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.form.field.Number示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //Ext.form.field.Number示例
+            Ext.QuickTips.init();
+            var form = Ext.create('Ext.form.FormPanel',{
+                title:'Ext.form.field.Number示例',
+                bodyStyle:'padding:5 5 5 5',//表单边距
+                renderTo :'form',	//<div id='form'></div>
+                frame : true,
+                height:250,
+                width:550,
+                defaultType: 'numberfield',//设置表单字段的默认类型
+                defaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 80,//标签宽度
+                    width : 200,//字段宽度
+                    labelAlign : 'left',//标签对齐方式
+                    msgTarget :'side'   //在字段的右边显示一个提示信息
+                },
+                items:[{
+                    fieldLabel:'整数',
+                    hideTrigger : true,//隐藏微调按钮
+                    allowDecimals : false,//不允许输入小数
+                    nanText :'请输入有效的整数'//无效数字提示
+                },{
+                    fieldLabel:'小数',
+                    decimalPrecision : 2,//精确到小数点后两位
+                    allowDecimals : true,//允许输入小数
+                    nanText :'请输入有效的小数'//无效数字提示
+                },{
+                    fieldLabel:'数字限制',
+                    baseChars :'12345'//输入数字范围
+                },{
+                    fieldLabel:'数值限制',
+                    maxValue : 100,//最大值
+                    minValue : 50//最小值
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

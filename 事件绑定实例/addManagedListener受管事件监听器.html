@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addManagedListener受管事件监听器</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            function createFn(){
+                alert('新建');
+            }
+            function openFn(){
+                alert('打开');
+            }
+            function saveFn(){
+                alert('保存');
+            }
+            Ext.create('Ext.toolbar.Toolbar',{//创建工具栏
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                width:300,
+                items : [
+                    {text:'新建',id:'createBtn',iconCls:'newIcon'},
+                    {text:'打开',id:'openBtn',iconCls:'openIcon'},
+                    {text:'保存',id:'saveBtn',iconCls:'saveIcon'},
+                    {text:'销毁新建按钮',handler : function(){
+                        //销毁新建按钮
+                        Ext.getCmp('createBtn').destroy();
+                    }}
+                ]
+            });
+            var createBtn = Ext.getCmp('createBtn');
+            createBtn.on('click',createFn);
+//以下的事件绑定将受createBtn组件是否销毁的控制，如果createBtn组件销毁
+//了则事件绑定同时解除。
+            createBtn.addManagedListener(Ext.getCmp('openBtn'),'click',openFn);
+            createBtn.addManagedListener(Ext.getCmp('saveBtn'),'click',saveFn);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

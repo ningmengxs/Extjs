@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.grid.property.Grid示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //创建属性表格
+            var grid = new Ext.grid.property.Grid({
+                title: 'Ext.grid.property.Grid示例',
+                width: 300,
+                height: 200,
+                renderTo: Ext.getBody(),
+                //自定义属性编辑器
+                customEditors : {
+                    "性别" : new Ext.form.ComboBox({
+                        editable : false,
+                        displayField:'sex',
+                        mode: 'local',
+                        triggerAction: 'all',
+                        store:new Ext.data.SimpleStore({
+                            fields: ['sex'],
+                            data : [['男'],['女']]
+                        })
+                    }),
+                    "出生日期": new Ext.form.DateField({
+                        format : 'Y年m月d日',
+                        selectOnFocus:true,
+                        allowBlank : false
+                    })
+                },
+                //自定义渲染函数
+                customRenderers: {
+                    //格式化布尔值显示
+                    "是否已婚": function(v){
+                        return v?'是':'否';
+                    },
+                    //格式化日期显示
+                    "出生日期": Ext.util.Format.dateRenderer('Y年m月d日')
+                },
+                source: {
+                    "员工名称" : "张三",
+                    "出生日期" : Ext.Date.parse('10/15/2006', 'm/d/Y'),
+                    "性别" : '男',
+                    "是否已婚" : false,
+                    "年龄" : 29
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

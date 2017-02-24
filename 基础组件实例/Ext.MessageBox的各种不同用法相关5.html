@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.MessageBox的各种不同用法相关5</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.MessageBox.msgButtons[0].setText('确定');
+                //'yes'
+            Ext.MessageBox.msgButtons[1].setText('是');
+                //'no'
+            Ext.MessageBox.msgButtons[2].setText('否');
+                //'cancel'
+            Ext.MessageBox.msgButtons[3].setText('取消');
+
+            Ext.MessageBox.show({
+                title:'提示',
+                msg:'自定义按钮文字',
+                modal:true,
+                buttons:Ext.Msg.YESNOCANCEL
+        });
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

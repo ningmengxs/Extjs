@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多级菜单栏</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var Toolbar = new Ext.toolbar.Toolbar({//创建工具栏
+                renderTo:'toolbar',
+                width:300
+            });
+            var infoMenu = new Ext.menu.Menu({//一级菜单
+                ignoreParentClicks : true,//忽略父菜单的单击事件
+                plain : true,
+                items : [
+                    {
+                        text: '个人信息',
+                        menu: new Ext.menu.Menu({//二级菜单
+                            ignoreParentClicks : true,//忽略父菜单的单击事件
+                            items:[
+                                {
+                                    text: '基本信息',
+                                    menu : new Ext.menu.Menu({//三级菜单
+                                        items:[
+                                            {text: '身高',handler:onMenuItem},
+                                            {text: '体重',handler:onMenuItem}
+                                        ]
+                                    })}
+                            ]
+                        })
+                    },//添加菜单项
+                    {text: '公司信息'}
+                ]
+            });
+            Toolbar.add(
+                {text : '设置',	menu : infoMenu}//将菜单加入工具栏
+            );
+            function onMenuItem(item){//选择菜单项的处理函数
+                alert(item.text);//取得菜单项的text属性
+            }
+        });
+    </script>
+</head>
+<body>
+<div id='toolbar'></div>
+</body>
+</html>

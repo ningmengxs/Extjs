@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用items配置项添加单一组件示例：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.panel.Panel',{
+                title:'日历',
+                frame:true,//渲染面板
+                collapsible : true,//允许展开和收缩
+                renderTo: Ext.getBody(),
+                width : 200,
+                bodyPadding: 5,
+                items: [{//向面板中添加一个日期组件
+                    xtype: 'datepicker',
+                    minDate: new Date()
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

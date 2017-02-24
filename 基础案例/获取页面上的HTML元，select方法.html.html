@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素的DOM，使用getDom方法</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //获得id为'panel1'的组件的Dom,其执行结果和panel.el.dom相同
+            var comp = Ext.getDom('panel1');
+            Ext.Msg.alert('提示',"通过Ext.getDom取得的dom的id:"+comp.id+
+                "<br>通过另一种方式取得panel的dom其id:"+panel.el.dom.id);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

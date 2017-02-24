@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提示信息3</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.QuickTips.init();
+            var testForm = Ext.create('Ext.form.Panel',{
+                title:'Ext.form.field.TextArea示例',
+                bodyStyle:'padding:5 5 5 5',//表单边距
+                frame : true,
+                height:150,
+                width:250,
+                renderTo :'form',  //<div id='form'></div>
+                items:[{
+                    xtype : 'textarea',
+                    fieldLabel : '备注',
+                    id:'memo',//字段组件id
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 60,//标签宽度
+                    width:200
+                }],
+                buttons:[{text:'确定',handler:showValue}]
+            })
+            function showValue(){
+                var memo = testForm.getForm().findField('memo');//取得输入控件
+                alert(memo.getValue());//取得控件值
+            }
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

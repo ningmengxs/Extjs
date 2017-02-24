@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.selection.CheckboxModel（复选框选择模式）</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //注册复选框选择模式别名为selection.checkboxmodel
+            Ext.ClassManager.setAlias('Ext.selection.CheckboxModel','selection.checkboxmodel');
+            multiSelect : true,//支持多选
+                selModel: {
+                selType : 'checkboxmodel'//复选框选择模式Ext.selection.CheckboxModel
+            },
+            tbar : [{
+                text : '取得所选行',
+                handler : function(){
+                    var msg = '';
+                    var rows = grid.getSelectionModel().getSelection();
+                    for(var i = 0; i < rows.length; i++){
+                        msg = msg + rows[i].get('name') + '\n';
+                    }
+                    alert(msg);
+                }
+            }]
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

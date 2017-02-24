@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>grid的例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //配置表格列
+            {header: "姓名", width: 50, dataIndex: 'name'},
+            {header: "组长", width: 50, dataIndex: 'leader',
+                xtype: 'booleancolumn',//Ext.grid.column.Boolean布尔列
+                trueText: '是',
+                falseText: '否'
+            },
+            {header: "生日", width: 100, dataIndex: 'birthday',
+                xtype : 'datecolumn',//Ext.grid.column.Date日期列
+                format : 'Y年m月d日'//日期格式化字符串
+            },
+            {header: "薪资", width: 50, dataIndex: 'salary',
+                xtype: 'numbercolumn',//Ext.grid.column.Number数字列
+                format:'0,000'//数字格式化字符串
+            }
+            xtype: 'actioncolumn',//Ext.grid.column.Action动作列
+                items: [{
+                icon: 'images/edit.gif',//指定编辑图标资源的URL
+                handler: function(grid, rowIndex, colIndex) {
+                    //获取被操作的数据记录
+                    var rec = grid.getStore().getAt(rowIndex);
+                    alert("编辑 " + rec.get('name'));
+                }
+            },{
+                icon: 'images/del.gif',//指定编辑图标资源的URL
+                handler: function(grid, rowIndex, colIndex) {
+                    var rec = grid.getStore().getAt(rowIndex);
+                    alert("删除 " + rec.get('name'));
+                }
+            },{
+                icon: 'images/save.gif',//指定编辑图标资源的URL
+                handler: function(grid, rowIndex, colIndex) {
+                    var rec = grid.getStore().getAt(rowIndex);
+                    alert("保存 " + rec.get('name'));
+                }
+            }]
+            {
+                header: "描述", width: 100,
+                xtype: 'templatecolumn',//Ext.grid.column.Template数字列
+                tpl : '{name}<tpl if="leader == false">不</tpl>是组长'
+            }
+
+            Ext.create('Ext.grid.RowNumberer',{text : '行号', width : 35})
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

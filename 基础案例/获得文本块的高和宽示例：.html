@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>线程运行实例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var t = new Ext.util.TextMetrics('id01',5);
+            Ext.Msg.alert("测试","通过getSize('the text')取得的文本块的宽度是:"+t.getSize('the text').width+
+                "<br>通过getHeight('new text test')取得的文本块的高度是:"+t.getHeight('new text test')+
+                "<br>measure('id01','重新测试方法',3)方法测试"+Ext.util.TextMetrics.measure('id01','重新测试方法',3).width);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

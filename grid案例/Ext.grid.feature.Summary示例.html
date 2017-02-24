@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.grid.feature.Summary示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            features: [{
+                ftype: 'summary'//Ext.grid.feature.Summary表格汇总特性
+            }],
+                columns: [//配置表格列
+                {header: "姓名", flex: 1, dataIndex: 'name',
+                    summaryType: 'count',//求数量
+                    summaryRenderer: function(value){
+                        return '员工总数：'+value
+                    }
+                },
+                {header: "薪资", flex: 1, dataIndex: 'salary',
+                    summaryType: 'average',//求平均值
+                    summaryRenderer: function(value){
+                        return '平均薪资：'+value
+                    }
+                }
+            ]
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

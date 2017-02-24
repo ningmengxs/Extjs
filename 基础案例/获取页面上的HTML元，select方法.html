@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select方法</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var el = Ext.select(["div1","div2"],true);
+            el.on("click",function tes(e){
+                Ext.Msg.alert("提示","您点击了id为" + Ext.get(e.target).dom.id + "的节点");
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

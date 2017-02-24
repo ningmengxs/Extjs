@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微调字段 Ext.form.field.Spinner示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //Ext.form.field.Spinner示例
+            Ext.create('Ext.form.Panel',{
+                title:'Ext.form.field.Spinner示例',
+                bodyStyle:'padding:5 5 5 5',//表单边距
+                frame : true,
+                height:70,
+                width:250,
+                renderTo :'form',
+                defaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 70,//标签宽度
+                    width : 200,//字段宽度
+                    labelAlign : 'left'//标签对齐方式
+                },
+                items:[{
+                    xtype : 'spinnerfield',
+                    fieldLabel:'微调字段',
+                    id : 'salary',//组件id
+                    value : 100,//初始化字段值
+                    onSpinUp : function(){
+                        var salaryCmp = Ext.getCmp('salary');//通过组件id获取组件对象
+                        //增加默认值
+                        salaryCmp.setValue(Number(salaryCmp.getValue()) + 1);
+                    },
+                    onSpinDown : function(){
+                        var salaryCmp = Ext.getCmp('salary');
+                        //减小默认值
+                        salaryCmp.setValue(Number(salaryCmp.getValue()) - 1);
+                    }
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

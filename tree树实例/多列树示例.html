@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多列树示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var tree = Ext.create('Ext.tree.Panel', {
+                title: 'TreeGrid（多列树示例）',
+                renderTo: Ext.getBody(),
+                width : 200,
+                height : 820,
+                fields: ['name', 'description'],
+                columns: [{
+                    xtype: 'treecolumn',//树状表格列
+                    text: '名称',
+                    dataIndex: 'name',
+                    width: 100,
+                    sortable: true
+                }, {
+                    text: '描述',
+                    dataIndex: 'description',
+                    flex: 1,
+                    sortable: true
+                }],
+                root: {
+                    name: '树根',
+                    description: '树根的描述',
+                    expanded: true,
+                    children: [{
+                        name: '节点一',
+                        description: '节点一的描述',
+                        leaf: true
+                    }, {
+                        name: '节点二',
+                        description: '节点二的描述',
+                        leaf: true
+                    }]
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

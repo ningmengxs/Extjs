@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.MessageBox的各种不同用法相关9</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //通过调用updateProgress方法同时更新提示信息和进度条
+            var msgBox = Ext.MessageBox.show({
+                title:'提示',
+                msg:'动态跟新的进度条和信息文字',
+                modal:true,
+                width:300,
+                progress:true
+            })
+            var count = 0;//滚动条被刷新的次数
+            var percentage = 0;//进度百分比
+            var progressText = '';//进度条信息
+            var task = {
+                run:function(){
+                count++;
+                //计算进度
+                percentage = count/10;
+                //生成进度条文字
+                progressText = '当前完成度：'+percentage*100 + "%";
+                //更新信息提示对话框
+                msgBox.updateProgress(percentage,progressText,
+                '当前时间：'+Ext.util.Format.date(new Date(),'Y-m-d g:i:s A'));
+                //刷新10次后关闭信息提示对话框
+                if(count > 10){
+                    Ext.TaskManager.stop(task);
+                    msgBox.hide();
+                }
+            },
+            interval:1000
+        }
+            Ext.TaskManager.start(task);
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

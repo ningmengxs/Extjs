@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.grid.plugin.CellEditing示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            plugins: [
+                Ext.create('Ext.grid.plugin.CellEditing', {
+                    clicksToEdit: 1//设置鼠标单击1次进入编辑状态
+                })
+            ],
+                selType: 'cellmodel',//设置为单元格选择模式
+                columns: [//配置表格列
+                Ext.create('Ext.grid.RowNumberer',{text : '行号', width : 35}),
+                {header: "姓名", width: 50, dataIndex: 'name',
+                    editor: {//文本字段
+                        xtype:'textfield',
+                        allowBlank:false
+                    }
+                },
+                {header: "生日", width: 100, dataIndex: 'birthday',
+                    xtype : 'datecolumn',//Ext.grid.column.Date日期列
+                    format : 'Y年m月d日',//日期格式化字符串
+                    editor: {//日期字段
+                        xtype:'datefield',
+                        allowBlank:false
+                    }
+                },
+                {header: "薪资", width: 50, dataIndex: 'salary',
+                    xtype: 'numbercolumn',//Ext.grid.column.Number数字列
+                    format:'0,000',//数字格式化字符串
+                    editor: {//数字字段
+                        xtype:'numberfield',
+                        allowBlank:false
+                    }
+                }
+            ]
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

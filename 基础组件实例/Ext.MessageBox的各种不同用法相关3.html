@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.MessageBox的各种不同用法相关3</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.MessageBox.prompt('提示','输入一些内容看看：',callBack,this,true,"我是默认值");
+            function callBack(id,msg){
+                alert('单击的按钮ID是：'+id+'\n'+'输入的内容是：'+msg);
+            }
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

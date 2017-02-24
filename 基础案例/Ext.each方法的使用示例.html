@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.each方法的使用示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //定义一个集合
+            var array = [],i;
+            //为集合加入元素,这些元素为从0到9的数字
+            for(i=0;i<10;i++){
+                array.push(i);
+            }
+            function fn(item,index,allItems){
+                //如果跌代对象的元素值大于5则终止跌代执行
+                if(item>5){
+                    return false;
+                }else{
+                    //为集合元素中值小于5的元素进行字符串的追加
+                    allItems[index] = item+"_st"
+                }
+            }
+
+            function fn1(item,index,allItems){
+                if(index>0)
+                    return false;
+                //只执行一次
+                Ext.Msg.alert('最后的处理结果',
+                    "<div style='width:160px'>最后集合为:"+allItems+"</div>");
+            }
+            //对集合进行字符串的追加
+            Ext.each(array,fn);
+            //打印集合的所有元素值
+            Ext.each(array,fn1);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

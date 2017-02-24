@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.MessageBox的各种不同用法相关2</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.MessageBox.confirm('提示','请单击我，做出选择',callBack);
+            function callBack(id){
+                alert('单击的按钮ID是：'+id);
+            }
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

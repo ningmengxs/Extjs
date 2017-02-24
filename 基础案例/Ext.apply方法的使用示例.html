@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.apply方法的使用示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //定义两个对象,一个目标对象一个源对象
+            var tarObj = {},srcObj
+            srcObj = {};
+            srcObj.name = "源对象";
+            srcObj.text = "我的文本内容已经从srcObj中拷贝过来了";
+            srcObj.width = "130px";
+//调用Ext.apply进行处理,从srcObj中拷贝属性到tarObj中
+            Ext.apply(tarObj,srcObj);
+            Ext.Msg.alert('Ext.apply示例',"tarObj的属性如下:<br>name:"+
+                tarObj.name+"<br>text:"+tarObj.text+
+                "<br>width:"+tarObj.width);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

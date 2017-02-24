@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.htmlDecode方法示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.Msg.alert("提示",Ext.htmlDecode("<table width='240' border='1' id='tab1' cellspacing='2' cellpadding='4'><tr><td>简单的html表格<input type='button' value='按钮'></td></tr></table>"));
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

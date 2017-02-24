@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.core.DomHelper示例：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.core.DomHelper.append(Ext.get("div1"),"<br>新追加了文本",true);
+
+//给id为div1的元素指定一个样式表
+//其样式表的形式可以是直接用文本,如:font-size:18px
+//也可以用文本表示的对象,如:{font-size:18px;}
+            Ext.core.DomHelper.applyStyles(Ext.get("div1"),"font-size:18px;color:green;font-weight:bold;");
+            var str = Ext.get("div1").dom.outerHTML;
+//由于Ext.Msg.alert会展示alert里的html
+//所以我们特意用文本框来展示应用了样式表后的div效果字符串
+            Ext.Msg.alert('DomHelper示例','<textarea rows="6" cols="35">'+str+'</textarea>');
+
+//首先通过DomHelper.createTemplate创建一套模板
+            var test = Ext.core.DomHelper.createTemplate('<div name="{id}">'+
+                '<span class="{cls}">{name:trim} {value:ellipsis(10)}<br>第二行文本</span>'+
+                '</div>');
+//通过定义的模板替换模板中的变量,然后追加在div的id为div1的div里面进行展现
+            test.append(Ext.get("div1"),{id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'},true);
+
+//给指定的div1在其后插入一个新的div，类似的有insertBefore方法，insertFirst方法
+            Ext.core.DomHelper.insertAfter(Ext.get("div1"),{id: 'item2', html: "<div id='div2' style='height:60px;padding:5px;background-color:#FEFCE7'>我是新追加的Div对象</div>"});
+//给指定的div1在之前插入一个新的html
+            Ext.core.DomHelper.insertHtml("beforeBegin",document.getElementById("div1"),"我是新插入的Html文本");
+//给指定的div1替换新的html
+            Ext.core.DomHelper.overwrite(document.getElementById("div1"),"我是新替换的Html文本");
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

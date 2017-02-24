@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addListener方法</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //创建Person类
+            var Person = Ext.extend(Ext.util.Observable,{
+                constructor : function(name){
+                    this.name = name;
+                    this.sayNum = 0;
+                    this.say = function(){
+                        if(this.sayNum < 2){
+                            this.sayNum += 1;
+                            alert('I am '+name);
+                        }else{
+                            this.sayNum = 0;//触发自定义事件后计数器归零
+                            this.fireEvent('onSay',this);//激发自定义事件
+                        }
+                    }
+                    this.addEvents({//加入自定义事件
+                        "onSay" : true
+                    });
+                }
+            });
+            var per = new Person('tom',3);//创建对象
+//为自定义事件绑定处理函数
+            per.addListener('onSay',function handler(){
+                alert('发生了自定义事件');
+            });
+        });
+    </script>
+</head>
+<body>
+<input type='button' value='say' onclick='per.say()'>
+</body>
+</html>

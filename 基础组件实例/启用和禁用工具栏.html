@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>启用和禁用工具栏</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.onReady(function(){
+                var toolbar = new Ext.toolbar.Toolbar({//创建工具栏
+                    renderTo:'toolbar',
+                    width:200,
+                    items :[{
+                        text:'新建',//按钮上显示的文字
+                        handler:onButtonClick//点击按钮的处理函数
+                    },
+                        {text:'打开',handler:onButtonClick},
+                        {text:'保存',handler:onButtonClick}]
+                });
+
+                function onButtonClick(btn){//点击按钮时调用的处理函数
+                    alert(btn.text);//取得按钮上的文字
+                }
+
+                Ext.get('enabledBtn').on('click',function(){
+                    //启用工具栏
+                    toolbar.enable();
+                });
+                Ext.get('disabledBtn').on('click',function(){
+                    //禁用工具栏
+                    toolbar.disable();
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<div id='toolbar'></div>
+<input type=button value='启用工具栏' id='enabledBtn'>
+<input type=button value='禁用工具栏' id='disabledBtn'>
+</body>
+</html>

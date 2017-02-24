@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.MessageBox的各种不同用法相关4</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.MessageBox.show({
+                title:'提示',
+            msg:'我有三个按钮，和一个多行文本区。',
+            modal:true,
+            prompt:true,
+            value:'请输入',
+            fn:callBack,
+            buttons:Ext.Msg.YESNOCANCEL,
+            icon:Ext.Msg.QUESTION
+        })
+            function callBack(id,msg){
+                alert('单击的按钮ID是：'+id+'\n'+'输入的内容是：'+msg);
+            }
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

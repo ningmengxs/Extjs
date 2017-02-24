@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax模式的表单数据加载：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.QuickTips.init();//初始化提示;
+            var productForm = Ext.create('Ext.form.Panel',{
+                title:'表单加载示例',
+                width : 300,
+                frame : true,
+                fieldDefaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 80,//标签宽度
+                    width : 200
+                },
+                renderTo: Ext.getBody(),
+                items:[{
+                    fieldLabel:'产品名称',
+                    xtype : 'textfield',
+                    name : 'productName',
+                    value:'U盘'//同步加载数据
+                },{
+                    fieldLabel:'金额',
+                    xtype : 'numberfield',
+                    name : 'price',
+                    value : 100//同步加载数据
+                },{
+                    fieldLabel:'生产日期',
+                    xtype : 'datefield',
+                    format:'Y年m月d日',//显示日期的格式
+                    name : 'date',
+                    value : new Date()//同步加载数据
+                },{
+                    xtype : 'hidden',
+                    name : 'productId',
+                    value:'001'//产品id
+                },{
+                    fieldLabel:'产品简介',
+                    name : 'introduction',
+                    xtype : 'textarea'
+                }],
+                buttons:[{
+                    text : '加载简介',
+                    handler : loadIntroduction
+                }]
+            });
+            //表单加载数据的回调函数
+            function loadIntroduction(){
+                var params = productForm.getForm().getValues();
+                productForm.getForm().load({
+                    params : params,//传递参数
+                    url : 'productServer.jsp',//请求的url地址
+                    method:'GET',//请求方式
+                    success:function(form,action){//加载成功的处理函数
+                        Ext.Msg.alert('提示','产品简介加载成功');
+                    },
+                    failure:function(form,action){//加载失败的处理函数
+                        Ext.Msg.alert('提示','产品简介加载失败<br>失败原因：'+action.result.errorMessage);
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

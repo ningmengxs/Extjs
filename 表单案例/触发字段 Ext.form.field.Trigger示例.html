@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>触发字段 Ext.form.field.Trigger示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //Ext.form.field.Trigger示例
+            var testForm = Ext.create('Ext.form.Panel',{
+                title:'Ext.form.field.Trigger示例',
+                bodyStyle:'padding:5 5 5 5',//表单边距
+                frame : true,
+                height:100,
+                width:270,
+                renderTo :'form',
+                defaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 70,//标签宽度
+                    width : 300,//字段宽度
+                    labelAlign : 'left'//标签对齐方式
+                },
+                items:[{
+                    xtype : 'triggerfield',
+                    id:'memo',
+                    fieldLabel:'触发字段',
+                    hideTrigger : false,//不隐藏触发按钮
+                    onTriggerClick : function(){
+                        var memo = testForm.getForm().findField('memo');//取得输入控件
+                        alert(memo.getValue());//取得控件值
+                        Ext.getCmp('memo').setValue('test');
+                    }
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

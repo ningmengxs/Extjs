@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel面板使用</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.panel.Panel',{
+                title:'面板头部（header）',
+                tbar : ['顶端工具栏(top toolbars)'],
+                bbar : ['底端工具栏(bottom toolbars)'],
+                height:200,
+                collapsible : true,
+                collapseDirection : 'left',
+                width:300,
+                frame:true,
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                bodyStyle:'background-color:#FFFFFF',
+                html:'面板体（body）',
+                tools : [
+                    {id:'toggle'},
+                    {id:'close'},
+                    {id:'maximize'}
+                ],
+                buttons:[{
+                    text:'面板底部（footer）'
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

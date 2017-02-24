@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.form.field.ComboBox本地数据源示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //Ext.form.field.ComboBox本地数据源示例
+            //创建数据模型
+            Ext.regModel('PostInfo', {
+                fields: [{name: 'province'},{name: 'post'}]
+            });
+            //定义组合框中显示的数据源
+            var postStore = Ext.create('Ext.data.Store',{
+                model : 'PostInfo',
+                data : [
+                    {province:'北京',post:'100000'},
+                    {province:'通县',post:'101100'},
+                    {province:'昌平',post:'102200'},
+                    {province:'大兴',post:'102600'},
+                    {province:'密云',post:'101500'},
+                    {province:'延庆',post:'102100'},
+                    {province:'顺义',post:'101300'},
+                    {province:'怀柔',post:'101400'}
+                ]
+            });
+            //创建表单
+            Ext.create('Ext.form.Panel',{
+                title:'Ext.form.field.ComboBox本地数据源示例',
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                frame : true,
+                height:300,
+                width:270,
+                defaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 70,//标签宽度
+                    width : 200,//字段宽度
+                    labelAlign : 'left'//标签对齐方式
+                },
+                items:[{
+                    xtype : 'combo',
+                    listConfig : {
+                        emptyText : '未找到匹配值',//当值不在列表是的提示信息
+                        maxHeight : 60//设置下拉列表的最大高度为60像素
+                    },
+                    name:'post',
+                    autoSelect : true,
+                    fieldLabel:'邮政编码',
+                    triggerAction: 'all',//单击触发按钮显示全部数据
+                    store : postStore,//设置数据源
+                    displayField:'province',//定义要显示的字段
+                    valueField:'post',//定义值字段
+                    queryMode: 'local',//本地模式
+                    forceSelection : true,//要求输入值必须在列表中存在
+                    typeAhead : true,//允许自动选择匹配的剩余部分文本
+                    value:'102600'//默认选择大兴
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提示信息2</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.QuickTips.init();
+            var loginForm = Ext.create('Ext.form.Panel',{
+                title:'Ext.form.field.Text示例',
+                bodyStyle:'padding:5 5 5 5',//表单边距
+                frame : true,
+                height:120,
+                width:200,
+                renderTo :'form',
+                defaultType: 'textfield',//设置表单字段的默认类型
+                defaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 50,//标签宽度
+                    width : 150,//字段宽度
+                    allowBlank : false,//是否允许为空
+                    labelAlign : 'left',//标签对齐方式
+                    msgTarget :'side'   //在字段的右边显示一个提示信息
+                },
+                items:[{
+                    fieldLabel : '用户名',
+                    name : 'userName',
+                    selectOnFocus : true,//得到焦点时自动选择文本
+                    //验证电子邮件格式的正则表达式
+                    regex : /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,4}$/,
+                    regexText:'格式错误'//验证错误之后的提示信息,
+                },{
+                    name : 'password',
+                    fieldLabel : '密码',
+                    inputType : 'password'//设置输入类型为password
+                }
+                ],
+                buttons:[{
+                    text : '登陆',
+                    handler : function(){
+                        loginForm.form.setValues({userName:'user@com',password:'123456'});
+                    }
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

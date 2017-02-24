@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.container.Viewport示例:</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.container.Viewport',{
+                layout:'border',//表格布局
+                items: [{
+                    title: 'north Panel',
+                    html : '上边',
+                    region: 'north',//指定子面板所在区域为north
+                    height: 100
+                },{
+                    title: 'West Panel',
+                    html : '左边',
+                    region:'west',//指定子面板所在区域为west
+                    width: 150
+                },{
+                    title: 'Main Content',
+                    html : '中间',
+                    region:'center'//指定子面板所在区域为center
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取页面上的HTML元素</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var el = Ext.get("the-id");
+            var appendEl = Ext.get("the-id-append");
+            function fn1(){
+                Ext.Msg.alert("提示","您在id为'the_id'的Element上按下了ctrl+c键");
+            }
+            el.addCls("special-css");//为元素添加样式表
+            appendEl.addCls("special-css");
+            appendEl.setWidth(240);
+            appendEl.setWidth(240, true);
+            el.focus();//将焦点移到el元素上
+            el.addClsOnFocus("focus-css");//为得到和失去焦点添加和移除css类
+            el.addClsOnOver("mouseover-css");//为鼠标移入移出事件添加和移除css类
+            el.addClsOnClick("click-css");//为点击事件添加和移除css类
+            el.setWidth(240);//将元素的宽度设为100相素
+            el.setWidth(240, true);//将元素的宽度设为100并带有动画效果
+            el.addKeyMap({key : "c",ctrl : true,fn:fn1,scope:el});//绑定el元素当键盘按下ctrl+c键时将呼叫fn函数
+            el.addKeyListener({key:"g",ctrl:true},fn1,el);//和上面的addKeyMap的功能相同，只是参数的传递方式不同
+        });
+    </script>
+</head>
+<body>
+<div id="the-id"></div>
+</body>
+</html>

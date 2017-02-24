@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JAON对象的例子</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        var person  =  { //json对象定义开始
+            name:'tom',  //字符串
+            age:24,     //数字
+            sex:'man',
+            married:false,//布尔值
+            books:[     //数组，在数组中又嵌入了两个json对象
+                {name:'历史',price:30},
+                {name:'文学',price:25}
+            ]
+
+        }//json对象定义结束
+        //通过点号表示法来取得JSON对象的内部属性
+        alert(person.name + ' ' + person.age + ' ' + person.sex);
+        //通过中括号表示法来取得JSON对象的内部属性
+        //alert(person["name"] + ' ' + person["age"] + ' ' + person["sex"]);
+    </script>
+</head>
+<body>
+</body>
+</html>

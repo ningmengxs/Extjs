@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.encode方法，将对象转换为字符串</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var person = {name : 'Tom', age: 24};//定义一个json对象
+            Ext.Msg.alert("提示",Ext.encode(person));//打印将对象转变成字符串
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

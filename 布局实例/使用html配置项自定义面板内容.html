@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用html配置项自定义面板内容：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var htmlArray = [
+                '<table border=1>',
+                '<tr><td colspan=2>员工列表</td></tr>',
+                '<tr><th width = 60>序号</th><th width = 80>姓名</th><tr>',
+                '<tr><td>1</td><td>张三</td></tr>',
+                '<tr><td>2</td><td>李四</td></tr>',
+                '<tr><td>3</td><td>王五</td></tr>',
+                '<tr><td>4</td><td>赵六</td></tr>',
+                '<tr><td>5</td><td>陈七</td></tr>',
+                '<tr><td>6</td><td>杨八</td></tr>',
+                '<tr><td>7</td><td>刘九</td></tr>',
+                '</table>'
+            ];
+            Ext.create('Ext.panel.Panel',{
+                title:'使用html配置项自定义面板内容',
+                height:150,//设置面板的高度
+                width:250,//设置面板的宽度
+                frame:true,//渲染面板
+                collapsible : true,//允许展开和收缩
+                autoScroll : true,//自动显示滚动条
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                html:htmlArray.join(''),
+                bodyStyle:'background-color:#FFFFFF'//设置面板体的背景色
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

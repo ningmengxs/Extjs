@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.tab.Panel示例（动态添加tab页）:</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var tabPanel = Ext.create('Ext.tab.Panel',{
+                title : 'Ext.tab.Panel示例（动态添加tab页）示例',
+                frame : true,
+                height : 150,
+                width : 300,
+                activeTab : 0,//默认激活第一个tab页
+                renderTo: Ext.getBody(),
+                items : [{
+                    title: 'tab标签页1',
+                    html : 'tab标签页1内容'
+                }],
+                buttons : [{
+                    text : '添加标签页',
+                    handler : addTabPage
+                }]
+            });
+            function addTabPage(){
+                var index = tabPanel.items.length + 1;
+                var tabPage = tabPanel.add({//动态添加tab页
+                    title: 'tab标签页'+index,
+                    html : 'tab标签页'+index+'内容',
+                    closable : true//允许关闭
+                })
+                tabPanel.setActiveTab(tabPage);//设置当前tab页
+            }
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

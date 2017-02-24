@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单的菜单栏2</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var toolbar = new Ext.toolbar.Toolbar({//创建工具栏
+                renderTo:'toolbar',
+                width:300
+            });
+            var fileMenu = new Ext.menu.Menu({//文件创建菜单
+                shadow : 'frame',//设置菜单四条边都有阴影
+                allowOtherMenus : true,
+                items : [
+                    new Ext.menu.Item({
+                        text: '新建',//菜单项名称
+                        menuHideDelay:1000,
+                        handler:onMenuItem//菜单项处理函数
+                    }),//添加菜单项
+                    {text: '打开',handler:onMenuItem},
+                    {text: '关闭',handler:onMenuItem}
+                ]
+            });
+            var editMenu = new Ext.menu.Menu({//编辑创建菜单
+                shadow : 'drop',//设置菜单在右下两条边有阴影
+                allowOtherMenus : true,
+                items : [
+                    {text: '复制',handler:onMenuItem},//添加菜单项
+                    {text: '粘贴',handler:onMenuItem},
+                    {text: '剪切',handler:onMenuItem}
+                ]
+            });
+            toolbar.add(
+                {text : '文件',	menu : fileMenu},//将菜单加入工具栏
+                {text : '编辑',	menu : editMenu}
+            );
+            function onMenuItem(item){//菜单项的回调方法
+                alert(item.text);//取得菜单项的text属性
+            }
+        });
+    </script>
+</head>
+<body>
+<div id='toolbar'></div>
+</body>
+</html>

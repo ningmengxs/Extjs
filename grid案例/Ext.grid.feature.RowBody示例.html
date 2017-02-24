@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.selection.CheckboxModel（复选框选择模式）</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            features: [Ext.create('Ext.grid.feature.RowBody',{
+                getAdditionalData: function(data, idx, record, orig) {
+                    var headerCt = this.view.headerCt,
+                        colspan  = headerCt.getColumnCount();//获取表格的列数
+
+                    return {
+                        rowBody: record.get('introduce'),//指定行体内容
+                        rowBodyCls: 'rowbodyColor',//指定行体样式
+                        rowBodyColspan: colspan//指定行体跨列的列数
+                    };
+                }
+            })]
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

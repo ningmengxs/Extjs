@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.apply方法的使用示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var el = Ext.get("id01");
+            var nav = new Ext.KeyNav(el,{
+                "left" : function(e){
+                    alert('向左的按键被按下了');
+                    //this.moveLeft(e.ctrlKey);
+                },
+                "right" : function(e){
+                    alert('向右的按键被按下了');
+                    //this.moveRight(e.ctrlKey);
+                },
+                "enter" : function(e){
+                    alert('回车键被按下了');
+                    //this.save();
+                },
+                scope : el
+            });
+            nav.enable();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

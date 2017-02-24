@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>具有选择框的菜单</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+
+            var toolbar = new Ext.toolbar.Toolbar({//创建工具栏
+                renderTo:'toolbar',
+                width:300
+            });
+            var themeMenu = new Ext.menu.Menu({//文件创建菜单
+                items : [{
+                    text:'主题颜色',
+                    menu:new Ext.menu.Menu({
+                        items:[{
+                            text: '红色主题',
+                            checked: true,//初始为选中状态
+                            group: 'theme',//为单选项进行分组
+                            checkHandler: onItemCheck
+                        },{
+                            text: '蓝色主题',
+                            checked: false,//初始为未选中状态
+                            group: 'theme',
+                            checkHandler: onItemCheck
+                        },{
+                            text: '黑色主题',
+                            checked: false,
+                            group: 'theme',
+                            checkHandler: onItemCheck
+                        }]
+                    })
+                },{
+                    text:'是否启用',
+                    checked : false
+                }]
+            });
+
+            toolbar.add(
+                {text : '风格选择',	menu : themeMenu}//将菜单加入工具栏
+            );
+            function onItemCheck(item){//菜单项的回调方法
+                alert(item.text);//取得菜单项的text属性
+            }
+        });
+    </script>
+</head>
+<body>
+<div id='toolbar'></div>
+</body>
+</html>

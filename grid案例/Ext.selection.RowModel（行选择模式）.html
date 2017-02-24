@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.selection.RowModel（行选择模式）</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            simpleSelect : true,//启用简单选择功能
+                multiSelect : true,//支持多选
+                selType: 'rowmodel',//设置为单元格选择模式Ext.selection.RowModel
+                tbar : [{
+                text : '取得所选行',
+                handler : function(){
+                    var msg = '';
+                    var rows = grid.getSelectionModel().getSelection();
+                    for(var i = 0; i < rows.length; i++){
+                        msg = msg + rows[i].get('name') + '\n';
+                    }
+                    alert(msg);
+                }
+            }]
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

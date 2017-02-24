@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断对象是否为空，用isEmpty方法</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //判断对象是否为空
+//当判断字符串时如果第二个参数不不同时结果也会不同
+//第二个参数表示'是否允许字符串为空'
+            Ext.Msg.alert('提示',"我们已经实例化的panel是否为空?"+Ext.isEmpty(panel)+"<br>Ext.isEmpty('',true)的值:"+Ext.isEmpty("",true)+"<br>Ext.isEmpty('',false)的值"+Ext.isEmpty("",false));
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

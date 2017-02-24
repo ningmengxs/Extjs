@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addListener方法</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //创建Employee工人类
+            var Employee = Ext.extend(Ext.util.Observable,{
+                constructor : function(config){
+                    this.name = config.name;
+                    this.eat = function(){
+                        this.fireEvent('startEat',this);//激发开始吃饭事件
+                        this.fireEvent('finishEat',this);//激发结束吃饭事件
+                    }
+                    this.addEvents({//加入自定义事件
+                        "startEat" : true,//开始吃饭事件
+                        "finishEat" : true//结束吃饭事件
+                    });
+                    Employee.superclass.constructor.call(this, config)
+                }
+            });
+
+//定义Waiter服务员类
+            var Waiter = Ext.extend(Ext.util.Observable,{
+                constructor : function(config){
+                    Waiter.superclass.constructor.call(this, config);
+                }
+            });
+//创建员工对象
+            var emp = new Employee({name:'tom'});
+//为自定义事件绑定处理函数
+            emp.addListener('startEat',function(){
+                alert(this.name + '开始吃饭了。');
+            });
+            emp.addListener('finishEat',function (){
+                alert(this.name + '吃完饭，可以收拾盘子了。');
+            });
+//创建服务员对象
+            var waiter = new Waiter();
+//使服务员对象与员工对象的finishEat事件进行关联
+//也就是说当员工对象的finishEat事件发生后，先执行自身的事件监听器，
+//然后事件会传递到服务员对象中，激发服务员对象的finishEat事件。
+            waiter.relayEvents(emp, ['finishEat']);
+            waiter.on('finishEat',function(){
+                alert('服务员开始收拾盘子。');
+            });
+        });
+    </script>
+</head>
+<body>
+<input type='button' value='员工吃饭' onclick='emp.eat()'>
+</body>
+</html>

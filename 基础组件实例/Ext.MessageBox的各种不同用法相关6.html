@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.MessageBox的各种不同用法相关6</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //多次设置信息提示框按钮文字//'ok'
+            Ext.MessageBox.msgButtons[0].setText('确认按钮');//第一次设置
+            Ext.MessageBox.alert('提示','提示信息一',function(){
+                Ext.MessageBox.msgButtons[0].setText('新的确认按钮');//第二次设置
+                Ext.MessageBox.alert('提示','提示信息二');
+            });
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

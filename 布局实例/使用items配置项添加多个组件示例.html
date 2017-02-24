@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用items配置项添加多个组件示例：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.panel.Panel',{
+                title:'使用items进行面板嵌套',
+                frame:true,//渲染面板
+                collapsible : true,//允许展开和收缩
+                height : 200,
+                width : 250,
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                layout : 'vbox',
+                defaults : {//设置默认属性
+                    bodyStyle:'background-color:#FFFFFF',//设置面板体的背景色
+                    collapsible : true,//允许展开和收缩
+                    width : 230,
+                    autoScroll : true//自动显示滚动条
+                },
+                items: [{
+                    title : '嵌套面板一',
+                    height : 80,//子面板高度为80
+                    contentEl : 'localElement'//加载本地资源
+                },{
+                    title : '嵌套面板二',
+                    autoLoad : 'page1.html'//加载远程页面
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<table border=1 id='localElement'>
+    <tr><th colspan=2>本地资源---员工列表</th></tr>
+    <tr>
+        <th width = 60>序号</th><th width = 80>姓名</th>
+    <tr>
+    <tr><td>1</td><td>张三</td></tr>
+    <tr><td>2</td><td>李四</td></tr>
+    <tr><td>3</td><td>王五</td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MixedCollection示例(还有first，get等方法)</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var item = new Ext.util.MixedCollection();
+            var item2 = new Ext.util.MixedCollection();
+            var a = {name:'a'};
+            var b = {name:'b'};
+            item.add('01',a);
+            item.add('01',b);
+            item2.add('01',a);
+            item2.add('02',a);
+            Ext.Msg.alert('提示','当已存在关联的索引时往01关联以象,item的个数为:'+item.length+'<br>'+'当不存在关联的索引往索引关联对象,item的个数为:'+item2.length);
+
+
+            var item = new Ext.util.MixedCollection();
+            var arr = [];
+            arr.push({name:'a'});
+            arr.push({name:'b'});
+            item.addAll(arr);
+            Ext.Msg.alert('提示','原item中的对象个数为:'+item.length+'<br>当加入arr数组中的两个对象后item中的对象个数为:'+item.length);
+
+            var item = new Ext.util.MixedCollection();
+            var arr = [{name:'a'},{name:'b'}];
+            item.clear();
+            Ext.Msg.alert('提示','当调用clear()后item的对象个数为:'+item.length);
+
+
+            var item = new Ext.util.MixedCollection();
+            item.addAll([{name:'a'},{name:'b'}]);
+            var col = new Ext.util.MixedCollection();
+            col = item.clone();
+            item.clear();
+            Ext.Msg.alert('提示','当调用item的clone()后返回的col的对象个数为:'+col.length);
+
+
+            var item = new Ext.util.MixedCollection();
+            var obja = {name:'a'};
+            item.add('obj1',obja);
+            Ext.Msg.alert('提示','集合中是否含有以obj1为关联索引的对象:'+item.containsKey('obj1')+'<br>集合中是否含有对象obja:'+item.contains(obja));
+
+
+            var item = new Ext.util.MixedCollection();
+            var obja = {name:'a'};
+            item.add('obj1',obja);
+            item.add('obj2',{name:'b'});
+            item.each(function(tempObj){
+                tempObj.name='newA';
+                Ext.Msg.alert('提示','通过调用each后的名称为:'+tempObj.name);
+            });
+
+            var item = new Ext.util.MixedCollection();
+            item.on('add',function(index,o,key){
+                Ext.Msg.alert('提示','&nbsp;&nbsp;&nbsp;&nbsp;当前有对象加入,加入后的index是:'+index+'<br>&nbsp;&nbsp;&nbsp;&nbsp;该对象的name是:'+o.name+'<br>&nbsp;&nbsp;&nbsp;&nbsp;加入对应的key是:'+key);
+            });
+            item.add('obj2key',{name:'nobj2name'});
+
+
+
+            var item = new Ext.util.MixedCollection();
+            item.on('remove',function(o,key){
+                Ext.Msg.alert('提示','当前移除的对象的name是:'+o.name+'<br>其key是:'+key);
+            });
+            item.add('obj2key',{name:'nobj2name'});
+            item.removeAtKey('obj2key');
+
+            var item = new Ext.util.MixedCollection();
+            var obj1 = {name:'obj1Name'};
+            var obj2 = {name:'obj2Name'};
+            item.add('obj1Key',obj1);
+            item.replace('obj2Key',obj1);
+            item.on('replace',function(key, oldO, newO){
+                Ext.Msg.alert('提示','当前被替换的对象的name是:'+oldO.name+'<br>其key是:'+key+'<br>新对象的name是:'+newO.name);
+            });
+            item.replace('obj2Key',obj2);
+
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

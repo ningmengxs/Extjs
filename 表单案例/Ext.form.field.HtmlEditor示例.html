@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.form.field.HtmlEditor示例：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.form.Panel',{
+                title:'Ext.form.field.HtmlEditor示例',
+                width : 630,
+                frame : true,
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                items:[{
+                    fieldLabel:'HTML字段',
+                    xtype : 'htmleditor',
+                    height:150,
+                    width : 600,
+                    value : 'ExtJS4登场',
+                    labelWidth : 70,//标签宽度
+                    labelSeparator :'：',//分隔符
+                    createLinkText : '创建超链接',//创建连接的提示信息
+                    defaultLinkValue : "http://www.",//连接的默认格式
+                    enableAlignments : true,//起用左、中、右对齐按钮
+                    enableColors : true,//起用前景色、背景色选择按钮
+                    enableFont : true,//起用字体选择按钮
+                    enableFontSize : true,//起用字体增大和缩写按钮
+                    enableFormat : true,//起用粗体、斜体、下划线按钮
+                    enableLinks : true,//起用创建连接按钮
+                    enableLists : true,//起用列表按钮
+                    enableSourceEdit : true,//起用源代码编辑按钮
+                    fontFamilies:['宋体','隶书','黑体'],//字体列表
+                    buttonTips :{
+                        bold : {
+                            title: 'Bold (Ctrl+B)',
+                            text: '粗体'
+                        },
+                        italic : {
+                            title: 'Italic (Ctrl+I)',
+                            text: '斜体'
+                        },
+                        underline : {
+                            title: 'Underline (Ctrl+U)',
+                            text: '下划线'
+                        },
+                        increasefontsize : {
+                            title: 'Grow Text',
+                            text: '增大字体'
+                        },
+                        decreasefontsize : {
+                            title: 'Shrink Text',
+                            text: '缩小字体'
+                        },
+                        backcolor : {
+                            title: 'Text Highlight Color',
+                            text: '背景色'
+                        },
+                        forecolor : {
+                            title: 'Font Color',
+                            text: '前景色'
+                        },
+                        justifyleft : {
+                            title: 'Align Text Left',
+                            text: '左对齐'
+                        },
+                        justifycenter : {
+                            title: 'Center Text',
+                            text: '居中对齐'
+                        },
+                        justifyright : {
+                            title: 'Align Text Right',
+                            text: '右对齐'
+                        },
+                        insertunorderedlist : {
+                            title: 'Bullet List',
+                            text: '项目符号'
+                        },
+                        insertorderedlist : {
+                            title: 'Numbered List',
+                            text: '数字编号'
+                        },
+                        createlink : {
+                            title: 'Hyperlink',
+                            text: '超连接'
+                        },
+                        sourceedit : {
+                            title: 'Source Edit',
+                            text: '切换源代码编辑模式'
+                        }
+                    }
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

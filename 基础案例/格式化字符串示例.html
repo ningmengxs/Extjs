@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>格式化字符串示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var str = "&lt;table width='300' cellspacing=1 border=1 cellpadding=1><tr><td>table string</td></tr></table>";
+            var str1 = " aV";
+            var dat = new Date();
+            var str2 = 12345;
+            var str3 = 1.2345;
+            Ext.Msg.alert(
+                "提示",
+                "原str为:"+str+"<br>ellipsis(str,5)后为:<br>"+Ext.util.Format.ellipsis(str,5)+"<br><br>"+
+                "原strl为:"+str1+"<br>进行capitalize(str1)后为:<br>"+Ext.util.Format.capitalize(str1)+"<br>"+
+                "<br>原dat为:<br>"+dat+"<br>"+
+                "进行date(dat,'yyyy/mm/dd')后为:<br>"+Ext.util.Format.date(dat)+"<br><br>"+
+                "注意调用htmlDecode(str)后展现出来的是一个带边框的表格:<br>"+Ext.util.Format.htmlDecode(str)+"<br>"+
+                "原strl:"+str1+"<br>经过lowercase后为:<br>"+Ext.util.Format.lowercase (str1)+
+                "<br>原str2:"+str2+",经过number后为:"+Ext.util.Format.number(str2,"-1234.0")+
+                "<br>原str3:"+str2+",经过number后为:"+Ext.util.Format.round(str3,2)
+            );
+
+//通过用字符串描述一个对象
+            var jsonStr = "{name:'the json name', value: 'the json sample'}";
+//将该字符串进行编码，这时将形成一个含有逻辑关系的对象
+            var obj = Ext.JSON.decode(jsonStr,true);
+//定义一些对象，最后用数组包装起来
+            var g='g',h='h',e =[g,h],f='f',b=[e,f],a = [b,'c'];
+//将该数组中存放的对象进行解码，打印该字符串
+            var endA = Ext.JSON.encode(a);
+            Ext.Msg.alert('提示',endA);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

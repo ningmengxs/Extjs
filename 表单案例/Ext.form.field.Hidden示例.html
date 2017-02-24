@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.form.field.Hidden示例：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.form.Panel',{
+                title:'Ext.form.field.Hidden示例',
+                frame : true,
+                height:100,
+                width:300,
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                defaultType: 'textfield',//设置表单字段的默认类型
+                defaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 70,//标签宽度
+                    width : 200,//字段宽度
+                    labelAlign : 'left'//标签对齐方式
+                },
+                items:[{
+                    name:'userName',
+                    fieldLabel:'姓名'
+                },{//隐藏域
+                    name:'age',
+                    xtype : 'hidden'
+                },{
+                    name:'sex',
+                    fieldLabel:'性别'
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用百分比指定列宽:</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.panel.Panel',{
+                title:'Ext.layout.container.Column布局示例',
+                layout : 'column',
+                frame:true,//渲染面板
+                height : 150,
+                width : 250,
+                renderTo: Ext.getBody(),
+                defaults : {//设置默认属性
+                    bodyStyle:'background-color:#FFFFFF;',//设置面板体的背景色
+                    height : 100,
+                    frame : true
+                },
+                items: [{
+                    title:'子面板一',
+                    columnWidth:.3//指定列宽为容器宽度的30%
+
+                },{
+                    title:'子面板二',
+                    columnWidth:.7//指定列宽为容器宽度的70%
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

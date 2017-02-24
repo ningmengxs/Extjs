@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>query方法</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //选择元素为div其id为div1的节点的数组
+            var el = Ext.query("#div1");
+            //选择元素为div的且这些div具备属性为property1其值为pro1的节点的数组
+            var targetD = Ext.query('div[property1=pro1]');
+            if(el.length>0 || targetD.length>0){
+                var msg = '';
+                msg = "取得了"+el.length+"个div的id为'div1'的节点<br>"+"取得了"+targetD.length+"个类型为div<br>具备属性property1且其值为'pro1'的节点";
+                msg += "<br>内容为：";
+                for(var i = 0; i<el.length; i++)
+                {
+                    msg += el[i].id + ":" + el[i].innerHTML;
+                }
+                msg += "<br>内容为：";
+                for(var i = 0; i<targetD.length; i++)
+                {
+                    msg += targetD[i].id + ":" + targetD[i].innerHTML;
+                }
+                Ext.Msg.alert('提示',msg);
+            }
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

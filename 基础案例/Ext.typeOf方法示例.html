@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.apply方法的使用示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var panel = new Ext.Panel({//实例化了一个对象
+                className:"test",
+                title:"示例",
+                renderTo:'sub1',
+                width:'300px',
+                html:"<div id='div1' style='height:200px'></div>"
+            });
+            var el = Ext.select(["div1"],true);
+            var array1 = new Array();//实例化了一个数组
+            el.on("click",function tes(){
+                Ext.Msg.alert("提示",'panel的类型是：'+Ext.typeOf(panel)+'，array1的类型是：'+Ext.typeOf(array1));
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

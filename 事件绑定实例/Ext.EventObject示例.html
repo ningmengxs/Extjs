@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.EventObject示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var btn = Ext.get('buttonTest');
+            btn.addListener('click',handler);//为click事件绑定处理函数
+            function handler(e){//事件处理函数
+                //获取事件发生时的x坐标
+                var x = e.getPageX();
+                //获取事件发生时的y坐标
+                var y = e.getPageY();
+                var msg = '事件发生坐标 : x='+x+' y='+y;
+                alert(Ext.EventManager.getPageXY(e));
+                alert(msg);
+            }
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

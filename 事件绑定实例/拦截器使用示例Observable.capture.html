@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义事件的另外一个例子：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            per.addListener('onSay',handler);//为自定义事件绑定处理函数
+            function handler(){//事件处理函数
+                alert('发生了自定义事件');
+            }
+//为per对象添加拦截器
+            Ext.util.Observable.capture(per,captureFunction);
+//拦截函数
+            function captureFunction(eventName){
+                if(eventName == 'onSay'){//事件名称是onSay则返回false终止事件的执行
+                    alert("拦截事件：“"+eventName+"”。");
+                    return false;
+                }
+                return true;
+            }
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

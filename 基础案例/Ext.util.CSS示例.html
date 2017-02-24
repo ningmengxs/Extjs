@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.apply方法的使用示例</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //通过传递一个样式表描述文本创建一个指定的样式表和id为the绑定在一起
+            Ext.util.CSS.createStyleSheet(".myclass{color:blue}","the");
+            var cssObj = Ext.util.CSS.getRule(".myclass",true);
+            Ext.Msg.alert('获取的信息','创建样式表<br>获取myclass样式表中规则的字体颜色:'+cssObj.style.color);
+
+            Ext.util.CSS.createStyleSheet(".a1{font-size:12px;color:blue;}","thecss");
+            var pan = new Ext.panel.Panel({
+                title:'添加css并移除',
+                html:'首先我们添加一个样式,然后移除他'
+                ,
+                height:200,
+                width:300,
+                cls: 'a1'
+            });
+            pan.render("hr_panel");
+
+            setBtn = new Ext.button.Button(
+                text : '移除样式',
+                width : 50,
+                handler : function(){
+                Ext.util.CSS.removeStyleSheet("thecss");
+            }
+        });
+        setBtn.render("setBut");
+
+        //定义使用改变个性化定制的控件
+        //该控制实际上为一个可供选择样式表值的下拉框
+        //当改变下拉框的选择时则调用Ext.util.CSS.swapStyleSheet来替换其样式表路径
+        Ext.onReady(function(){
+            var themes = [
+                {theme:'默认', css:'ext-all.css'},
+                {theme:'黑色',css: 'ext-all-access.css'},
+                {theme:'红色',css: 'ext-all-red.css'}];
+            //创建主题数据模型
+            Ext.regModel('Theme', {
+                fields: ['theme','css']
+            });
+            //创建主题数据源
+            var themeStore = Ext.create('Ext.data.Store',{
+                model : 'Theme',
+                data : themes
+            });
+            //创建主题切换选择框
+            var themeChange = Ext.create('Ext.form.ComboBox',{
+                id : 'themeChange',
+                width : 150,
+                labelWidth : 60,
+                labelSeparator :'：',//分隔符
+                fieldLabel:'样式选择',
+                store : themeStore,
+                editable : false,
+                triggerAction: 'all',//单击触发按钮显示全部数据
+                store : themeStore,//设置数据源
+                displayField : 'theme',
+                valueField : 'css',
+                queryMode: 'local',//本地模式
+                value:'ext-all.css',//默认风格
+                listeners : {
+                    'collapse' : function() {
+                        Ext.util.CSS.swapStyleSheet('theme', 'extjs4/resources/css/'+ this.getValue());
+                        contentIframe.window.themeChange(this.getValue());
+                    }
+                }
+            });
+            //定义panel
+            Ext.create('Ext.form.FormPanel',{
+                title:'Ext.form.ComboBox本地数据源示例',
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                frame : true,
+                height:100,
+                width:270,
+                defaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 70,//标签宽度
+                    width : 200,//字段宽度
+                    labelAlign : 'left'//标签对齐方式
+                },
+                items:themeChange
+            });
+        });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

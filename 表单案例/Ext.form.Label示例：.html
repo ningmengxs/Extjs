@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.form.Label示例：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Ext.form.Panel',{
+                title:'Ext.form.Label示例',
+                width : 200,
+                frame : true,
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                items:[ {
+                    xtype: 'label',
+                    forId: 'userName',//关联inputId为userName的表单字段
+                    text: '用户名'
+                },{
+                    name:'userName',
+                    xtype : 'textfield',
+                    inputId : 'userName',
+                    hideLabel : true //隐藏字段标签
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>

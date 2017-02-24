@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.MessageBox的各种不同用法相关7</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+                //通过调用updateText方法定时更新提示信息
+            var msgBox = Ext.MessageBox.show({
+                title:'提示',
+            msg:'动态跟新的信息文字',
+            modal:true,
+            buttons:Ext.Msg.OK,
+            fn:function(){
+                //停止定时任务
+                Ext.TaskManager.stop(task);
+            }
+
+        })
+        //Ext.TaskManager是一个功能类，用来定时执行程序，
+        //在这里我们使用它来定时触发提示信息的更新。
+            var task = {
+                run:function(){
+                msgBox.updateText('会动的时间：'+Ext.util.Format.date(new Date(),'Y-m-d g:i:s A'));
+            },
+            interval:1000
+        }
+            Ext.TaskManager.start(task);
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>将更多组件加入菜单</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+
+            var Toolbar = new Ext.toolbar.Toolbar({//创建工具栏
+                renderTo:'toolbar',
+                width:300
+            });
+
+            var fileMenu = new Ext.menu.Menu({//文件创建菜单
+                items : [{
+                    xtype : 'textfield',//创建表单字段
+                    hideLabel: true,
+                    width : 100
+                },{
+                    text:"颜色选择",
+                    menu : new Ext.menu.ColorPicker()
+                },
+                    {xtype: 'datepicker'},//添加日期选择器组件
+                    {
+                        xtype: 'buttongroup',//添加按钮组组件
+                        columns: 3,
+                        title: '按钮组',
+                        items: [{
+                            text: '用户管理',
+                            scale: 'large',
+                            colspan : 3,
+                            width : 170,
+                            iconCls: 'userManagerIcon',
+                            iconAlign: 'top'
+                        },{
+                            text: '新建', iconCls: 'newIcon'
+                        },{
+                            text: '打开', iconCls: 'openIcon'
+                        },{
+                            text: '保存', iconCls: 'saveIcon'
+                        }]
+                    }
+                ]
+            });
+
+            Toolbar.add(
+                {text : '文件',	menu : fileMenu}//将菜单加入工具栏
+            );
+        });
+    </script>
+</head>
+<body>
+<div id='toolbar'></div>
+</body>
+</html>

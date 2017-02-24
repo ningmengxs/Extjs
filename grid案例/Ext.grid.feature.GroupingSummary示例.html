@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.grid.feature.Grouping示</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            features: [Ext.create('Ext.grid.feature.GroupingSummary', {
+                groupByText : '用本字段分组',
+                showGroupsText : '显示分组',
+                groupHeaderTpl: '性别: {name} ({rows.length})', //分组标题模版
+                startCollapsed: true //设置初始分组是否收起
+            })],
+                columns: [//配置表格列
+                {header: "姓名", width: 100, dataIndex: 'name',
+                    summaryType: 'count',//求数量
+                    summaryRenderer: function(value){
+                        return '员工总数：'+value
+                    }
+                },
+                {header: "性别", width: 50, dataIndex: 'sex'},
+                {header: "年龄", width: 110, dataIndex: 'age',
+                    summaryType: 'average',//求数量
+                    summaryRenderer: function(value){
+                        return '平均年龄：'+value
+                    }
+                }
+            ]
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

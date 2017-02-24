@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义电话号码验证示例：</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all-neptune.css">
+    <link rel="stylesheet" type="text/css" href="../../examples/shared/example.css">
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+    <script type="text/javascript" src="../../locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            //自定义电话号码的vtype验证
+            Ext.apply(Ext.form.field.VTypes, {
+                phone:  function(v) {
+                    //规则区号（3-4位数字）-电话号码（7-8位数字）
+                    return /^(\d{3}-|\d{4}-)?(\d{8}|\d{7})$/.test(v);
+                },
+                phoneText: '请输入有效的电话号码',
+                phoneMask: /[\d-]/i//只允许输入数字和-号
+            });
+            Ext.QuickTips.init();
+            Ext.create('Ext.form.Panel',{
+                title:'自定义电话号码验证示例',
+                width : 300,
+                frame : true,
+                renderTo: Ext.getBody(),
+                bodyPadding: 5,
+                defaultType: 'textfield',//设置表单字段的默认类型
+                fieldDefaults:{//统一设置表单字段默认属性
+                    labelSeparator :'：',//分隔符
+                    labelWidth : 80,//标签宽度
+                    width : 270,//字段宽度
+                    msgTarget : 'side'
+                },
+                items:[{
+                    fieldLabel:'住宅号码',
+                    vtype:'phone'//使用电话类型验证
+                },{
+                    fieldLabel:'办公号码',
+                    vtype:'phone'//使用电话类型验证
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id='form'></div>
+<!-- 错误信息展示元素 -->
+<div id='errorMsg'></div>
+</body>
+</html>
